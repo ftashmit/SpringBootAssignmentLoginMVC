@@ -11,7 +11,7 @@
 <title>Employee List</title>
 </head>
 <body>
-
+<a href="register-emp.jsp">Register Emp</a>
 <h2>View All Employees</h2>
 
 <%

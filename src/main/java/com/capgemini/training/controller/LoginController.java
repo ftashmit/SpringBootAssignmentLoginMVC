@@ -21,6 +21,8 @@ public class LoginController {
 	@Autowired
 	LoginServices loginServices;
 	
+	
+	
 	@GetMapping("/")
 	public String loginPage() {
 		return "login.jsp";
@@ -34,9 +36,9 @@ public class LoginController {
 		
 		boolean flag = loginServices.validateUser(user, password);
 		if(flag) {
-			//page = "home.jsp";
 			try {
-				request.getRequestDispatcher("/allemp").forward(request,response);
+				request.getRequestDispatcher("/allemp").forward(request, response);
+				
 			}catch(Exception e){
 				e.printStackTrace();
 			}
