@@ -1,4 +1,4 @@
-package com.capgemini.training;
+package com.capgemini.training.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,7 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.capgemini.training.UemSpringBootMvcApplication;
+import com.capgemini.training.entity.UserEntity;
+import com.capgemini.training.services.LoginServices;
+
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 public class LoginController {
@@ -16,22 +21,25 @@ public class LoginController {
 	@Autowired
 	LoginServices loginServices;
 	
-	
-	
 	@GetMapping("/")
 	public String loginPage() {
 		return "login.jsp";
 	}
 	
 	@PostMapping("/login")
-	public String validate(String user, String password) {
+	public String validate(String user, String password, HttpServletRequest request, HttpServletResponse response) {
 		String page = null;
 		System.out.println(user);
 		System.out.println(password);
 		
 		boolean flag = loginServices.validateUser(user, password);
 		if(flag) {
-			page = "home.jsp";
+			//page = "home.jsp";
+			try {
+				request.getRequestDispatcher("/allemp").forward(request,response);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}else {
 			page = "login.jsp";
 		}
