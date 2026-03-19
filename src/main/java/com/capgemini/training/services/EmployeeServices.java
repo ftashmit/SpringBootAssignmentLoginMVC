@@ -23,4 +23,27 @@ public class EmployeeServices {
 		
 		return employeeRepository.save(emp);
 	}
+	
+	public void deleteEmployee(int id) {
+	    employeeRepository.deleteById(id);
+	}
+
+	public Employee getEmployeeById(int id) {
+	    return employeeRepository.findById(id).orElse(null);
+	}
+	
+	public Employee saveEmployee(Employee employee) {
+	    return employeeRepository.save(employee);
+	}
+	
+	// Get single employee
+	public Employee getSingleEmpInfo(int id) {
+		
+		return employeeRepository.findById(id).get();
+	}
+	
+	// Searching
+	public List<Employee> searchEmployee(String keyword) {
+	    return employeeRepository.search(keyword);
+	}
 }

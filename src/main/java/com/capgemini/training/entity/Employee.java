@@ -63,8 +63,8 @@ public class Employee {
         return empContactNo;
     }
 
-    public void setEmpContactNo(Long empContactNo) {
-        this.empContactNo = empContactNo;
+    public void setEmpContactNo(long contactNo) {
+        this.empContactNo = contactNo;
     }
 
     public String getEmpCity() {
@@ -73,5 +73,18 @@ public class Employee {
 
     public void setEmpCity(String empCity) {
         this.empCity = empCity;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Employee)) return false;
+        Employee emp = (Employee) o;
+        return id == emp.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return java.util.Objects.hash(id);
     }
 }
