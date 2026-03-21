@@ -46,4 +46,15 @@ public class EmployeeServices {
 	public List<Employee> searchEmployee(String keyword) {
 	    return employeeRepository.search(keyword);
 	}
+
+	public Employee updateSingleEmpInfo(int id, Employee emp) {
+		
+		return employeeRepository.save(emp);
+	}
+
+	public String deleteEmpInfo(int id) {
+		// TODO Auto-generated method stub
+		employeeRepository.deleteById(id);
+		return "Id deleted" ;
+	}
 }
